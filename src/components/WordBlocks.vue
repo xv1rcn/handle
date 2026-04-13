@@ -80,7 +80,7 @@ watchEffect(() => {
   position: absolute;
   top: 0;
   left: 0;
-  transition: transform 0.6s;
+  transition: transform var(--duration-flip) var(--ease-in-out);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }

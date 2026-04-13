@@ -38,7 +38,7 @@ watch(showShareDialog, (v) => {
       </div>
       <div grid="~ cols-2 gap-2" my4>
         <button
-          flex="~ col center" border="~ base" p4 op80 class="hover:op100 hover:bg-gray:5"
+          flex="~ col center" border="~ base" p4 op80 class="hover:op100 hover:bg-header"
           w-30 h-30
           @click="shareType = 'text'"
         >
@@ -46,7 +46,7 @@ watch(showShareDialog, (v) => {
           <div>{{ t('share-with-text') }}</div>
         </button>
         <button
-          flex="~ col center" border="~ base" p4 op80 class="hover:op100 hover:bg-gray:5"
+          flex="~ col center" border="~ base" p4 op80 class="hover:op100 hover:bg-header"
           w-30 h-30
           @click="shareType = 'image'"
         >

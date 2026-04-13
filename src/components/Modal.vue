@@ -68,12 +68,12 @@ const transform = computed(() => {
   >
     <div
       v-if="mask"
-      class="bg-base left-0 right-0 top-0 bottom-0 absolute transition-opacity duration-500 ease-out"
-      :class="modelValue ? 'opacity-50' : 'opacity-0'"
+      class="bg-base left-0 right-0 top-0 bottom-0 absolute transition-opacity duration-[var(--duration-base)] ease-[var(--ease-out)]"
+      :class="modelValue ? 'opacity-[var(--c-overlay-mask)]' : 'opacity-0'"
       @click="$emit('update:modelValue', false)"
     />
     <div
-      class="bg-base border-base absolute transition-all duration-200 ease-out max-w-screen max-h-screen overflow-auto scrolls"
+      class="bg-base border-base absolute transition-all duration-[var(--duration-fast)] ease-[var(--ease-out)] max-w-screen max-h-screen overflow-auto scrolls"
       :class="[positionClass]"
       :style="modelValue ? {} : { transform }"
     >

@@ -53,7 +53,7 @@ const validWords = computed(() => allWords.value.filter(i => checkValidIdiom(i, 
     <p text-xl font-serif mb2>
       <b>{{ t('dashboard') }}</b>
     </p>
-    <div v-if="passedTries.length >= 3 && triesMax" w-full max-w-100 bg-gray:5 p4 my4>
+    <div v-if="passedTries.length >= 3 && triesMax" w-full max-w-100 bg-header p4 my4>
       <p text-lg font-serif mb2 mt--1 text-center tracking-widest>
         {{ t('guess-dist') }}
       </p>

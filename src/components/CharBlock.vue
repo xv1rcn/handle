@@ -48,7 +48,7 @@ const blockColor = computed(() => {
     return 'border-base'
   if (exact.value)
     return 'border-transparent bg-ok text-white'
-  return 'border-transparent bg-gray-400/8'
+  return 'border-transparent bg-active'
 })
 
 const toneCharLocation = computed(() => {

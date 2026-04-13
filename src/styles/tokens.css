@@ -1,0 +1,50 @@
+:root {
+  /* Colors */
+  --c-primary: #0d828e;
+  --c-primary-deep: #08606a;
+  --c-ok: #1d9c9c;
+  --c-mis: #de7525;
+
+  --c-bg-base: #ffffff;
+  --c-bg-base-dark: #121212;
+  --c-bg-overlay: rgba(238, 238, 238, 0.5);
+  --c-bg-overlay-dark: rgba(34, 34, 34, 0.5);
+  --c-bg-header: rgba(107, 114, 128, 0.05);
+  --c-bg-active: rgba(107, 114, 128, 0.08);
+  --c-bg-hover: rgba(107, 114, 128, 0.2);
+  --c-bg-disabled: #4b5563;
+  --c-border-base: rgba(156, 163, 175, 0.1);
+  --c-overlay-mask: 0.5;
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+
+  /* Motion */
+  --duration-fast: 200ms;
+  --duration-base: 500ms;
+  --duration-slow: 1000ms;
+  --duration-flip: 600ms;
+  --ease-standard: ease;
+  --ease-out: ease-out;
+  --ease-in-out: ease-in-out;
+  --shake-distance-xs: 1px;
+  --shake-distance-sm: 2px;
+  --shake-duration: 400ms;
+}
+
+.dark {
+  --c-ok: #0d8e8e;
+}
+
+.colorblind {
+  --c-ok: #5ba554;
+  --c-mis: #ff46ff;
+  --c-primary: #5ba554;
+}
