@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { filterNonChineseChars } from '@hankit/tools'
-import { answer, dayNo, isDev, isFailed, isFinished, showCheatSheet, showFailed, showHelp, showHint } from '~/state'
+import { answer, dayNo, isFailed, isFinished, showCheatSheet, showFailed, showHelp, showHint } from '~/state'
 import { markStart, meta, tries, useNoHint, useStrictMode } from '~/storage'
 import { t } from '~/i18n'
 import { TRIES_LIMIT, WORD_LENGTH, checkValidIdiom } from '~/logic'
@@ -148,33 +148,6 @@ watchEffect(() => {
           <Countdown />
         </div>
       </Transition>
-
-      <template v-if="isDev">
-        <div h-200 />
-        <div op50 mb-2>
-          测试用
-        </div>
-        <div flex gap2>
-          <a
-            class="btn"
-            :href="`/?dev=hey&d=${dayNo - 1}`"
-          >
-            上一天
-          </a>
-          <button
-            class="btn"
-            @click="reset"
-          >
-            重置
-          </button>
-          <a
-            class="btn"
-            :href="`/?dev=hey&d=${dayNo + 1}`"
-          >
-            下一天
-          </a>
-        </div>
-      </template>
     </div>
   </div>
 </template>

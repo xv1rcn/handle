@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   breakpoints,
+  showCalendar,
   showCheatSheet,
   showDashboard,
   showFailed,
@@ -20,6 +21,9 @@ const lg = breakpoints.lg
   </Modal>
   <Modal v-model="showSettings" direction="top">
     <Settings my6 />
+  </Modal>
+  <Modal v-model="showCalendar" direction="top">
+    <Calendar />
   </Modal>
   <Modal v-model="showHint" direction="top">
     <Hint />

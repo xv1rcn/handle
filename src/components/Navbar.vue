@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { isDark, showDashboard, showHelp, showSettings, useMask } from '~/state'
+import { answer, dayNo, daySince, isDark, showCalendar, showDashboard, showHelp, showSettings, useMask } from '~/state'
 import { gamesCount } from '~/storage'
 
 const toggleDark = useToggle(isDark)
+const toggleCalendar = useToggle(showCalendar)
 const toggleSettings = useToggle(showSettings)
 const toggleDashboard = useToggle(showDashboard)
+
+const showCalendarEntry = computed(() => dayNo.value > 0 && dayNo.value <= daySince.value && !!answer.value.word)
 
 function openHelp() {
   showHelp.value = true
@@ -27,6 +30,9 @@ function openHelp() {
         </button>
       </div>
       <div flex items-center>
+        <button v-if="showCalendarEntry" icon-btn mx2 @click="toggleCalendar()">
+          <div i-carbon-calendar />
+        </button>
         <button icon-btn mx2 @click="toggleSettings()">
           <div i-carbon-settings />
         </button>

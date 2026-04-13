@@ -98,5 +98,14 @@
   "win-no-hint-count": "無提示",
   "win-rate": "勝率",
   "zhuyin": "注音",
-  "ziyin": "字音"
+  "ziyin": "字音",
+  "calendar": "日曆",
+  "calendar-month-format": "{0} 年 {1} 月",
+  "calendar-weekday-sun": "日",
+  "calendar-weekday-mon": "一",
+  "calendar-weekday-tue": "二",
+  "calendar-weekday-wed": "三",
+  "calendar-weekday-thu": "四",
+  "calendar-weekday-fri": "五",
+  "calendar-weekday-sat": "六"
 }

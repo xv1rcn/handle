@@ -4,6 +4,8 @@ import { START_DATE, TRIES_LIMIT, WORD_LENGTH, parseWord as _parseWord, testAnsw
 import { useNumberTone as _useNumberTone, inputMode, meta, spMode, tries } from './storage'
 import { getAnswerOfDay } from './answers'
 
+export { START_DATE, isDstObserved }
+
 export const isIOS = /iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
 export const isMobile = isIOS || /iPad|iPhone|iPod|Android|Phone|webOS/i.test(navigator.userAgent)
 export const breakpoints = useBreakpoints(breakpointsTailwind)
@@ -19,6 +21,7 @@ export const showDashboard = ref(false)
 export const showVariants = ref(false)
 export const showCheatSheet = ref(false)
 export const showShareDialog = ref(false)
+export const showCalendar = ref(false)
 export const useMask = ref(false)
 
 export const useNumberTone = computed(() => {
@@ -30,13 +33,18 @@ export const useNumberTone = computed(() => {
 })
 
 const params = new URLSearchParams(window.location.search)
-export const isDev = import.meta.hot || params.get('dev') === 'hey'
-export const daySince = useDebounce(computed(() => {
+const dayParam = params.get('d')
+const hasInvalidDayParam = dayParam !== null && !/^-?\d+$/.test(dayParam)
+const initialDayNo = dayParam === null ? null : Number.parseInt(dayParam, 10)
+const daySinceRaw = computed(() => {
   // Adjust date for daylight saving time, assuming START_DATE is not in DST
   const adjustedNow = isDstObserved(now.value) ? new Date(+now.value + 3600000) : now.value
   return Math.floor((+adjustedNow - +START_DATE) / 86400000)
-}))
-export const dayNo = ref(+(params.get('d') || daySince.value))
+})
+export const daySince = useDebounce(daySinceRaw)
+export const dayNo = ref(hasInvalidDayParam
+  ? daySinceRaw.value + 1
+  : ((initialDayNo !== null && Number.isFinite(initialDayNo)) ? initialDayNo : daySinceRaw.value))
 export const dayNoHanzi = computed(() => `${numberToHanzi(dayNo.value)}日`)
 export const answer = computed(() =>
   params.get('word')
@@ -98,4 +106,24 @@ export function getSymbolState(symbol?: string | number, key?: '_1' | '_2' | 'to
   if (results.includes('none'))
     return 'none'
   return null
+}
+
+/**
+ * 判断指定的 dayNo 是否合法可玩
+ * 包括：是否在答案范围内、是否在游玩限制范围内（dev 除外）
+ */
+export function isValidPlayDay(targetDay: number): boolean {
+  if (targetDay <= 0)
+    return false
+  if (targetDay > daySince.value)
+    return false
+  return true
+}
+
+export function navigateToDay(targetDay: number) {
+  if (!isValidPlayDay(targetDay))
+    return
+  const url = new URL(window.location.href)
+  url.searchParams.set('d', String(targetDay))
+  window.location.href = url.toString()
 }

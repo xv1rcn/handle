@@ -69,7 +69,8 @@ onMounted(async () => {
     {{ copied ? t('share-copied') : t('share-not-copied') }}
   </p>
   <textarea
-    bg-header rounded-[var(--radius-lg)] p5 select-text resize-none outline-none
+    bg-header p5 select-text resize-none outline-none
+    class="rounded-[var(--radius-lg)]"
     w-90 text-center
     style="line-height: 19px;letter-spacing: 1px;"
     :rows="lines.length"
